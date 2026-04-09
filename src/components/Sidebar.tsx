@@ -21,7 +21,7 @@ export default function Sidebar() {
   const isActive = (path: string) => pathname === path
 
   const navItemClass = (path: string) => `
-    flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200
+    flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 dark:focus-visible:ring-offset-[#1a1a1a]
     ${isActive(path)
       ? 'bg-blue-600/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400'
       : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-200'
@@ -77,8 +77,9 @@ export default function Sidebar() {
 
       <div className="p-4 border-t border-gray-200 dark:border-white/5">
         <button
+          aria-label={theme === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"}
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="flex items-center justify-center gap-2 w-full px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-colors"
+          className="flex items-center justify-center gap-2 w-full px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 dark:focus-visible:ring-offset-[#1a1a1a]"
         >
           {theme === "dark" ? (
             <><Sun className="w-4 h-4" /> Tema Claro</>
