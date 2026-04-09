@@ -3,7 +3,7 @@
 import { prisma } from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
 
-export async function getSuppliers(query?: string, categoria?: string) {
+export async function getSuppliers(query?: string, uf?: string) {
   return await prisma.supplier.findMany({
     where: {
       AND: [
@@ -14,7 +14,7 @@ export async function getSuppliers(query?: string, categoria?: string) {
             { cnpj: { contains: query } },
           ]
         } : {},
-        categoria ? { categorias: { contains: categoria } } : {}
+        uf ? { estado: { contains: uf } } : {}
       ]
     },
     include: { contatos: true },

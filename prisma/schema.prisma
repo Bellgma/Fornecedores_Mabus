@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -11,16 +11,27 @@ model Supplier {
   id             String    @id @default(cuid())
   razaoSocial    String
   nomeFantasia   String
-  cnpj           String
-  status         String    @default("Ativo") // Ativo, Inativo, Em Avaliação
+  cnpj           String    @unique
+  status         String    @default("Em análise") // Ativo, Inativo, Em análise
   categorias     String    // Separated by comma
-  historico      String?   // Nível de Preço / Observações
-  localidade     String?
+  historico      String?
+
+  // Endereço e Geolocalização
+  cep            String?
+  logradouro     String?
+  numero         String?
+  bairro         String?
+  cidade         String?
+  estado         String?   // UF (ex: SP, MG)
+  latitude       Float?
+  longitude      Float?
+
   catalogoResumo String?
   updatedAt      DateTime  @updatedAt
   createdAt      DateTime  @default(now())
 
   contatos       Contact[]
+  produtos       Product[]
 }
 
 model Contact {
@@ -33,6 +44,35 @@ model Contact {
   supplier     Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
 }
 
+model Product {
+  id           String   @id @default(cuid())
+  nome         String
+  descricao    String?
+  preco        Float?
+  supplierId   String
+  supplier     Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+}
+
+model Carrier {
+  id           String   @id @default(cuid())
+  nome         String
+  cnpj         String   @unique
+  status       String   @default("Ativo")
+  latitude     Float?
+  longitude    Float?
+  updatedAt    DateTime @updatedAt
+  createdAt    DateTime @default(now())
+}
+
+model Quote {
+  id           String   @id @default(cuid())
+  status       String   @default("Aberta") // Aberta, Aguardando, Fechada
+  descricao    String
+  dataLimite   DateTime?
+  updatedAt    DateTime @updatedAt
+  createdAt    DateTime @default(now())
+}
+
 model Template {
   id               String   @id @default(cuid())
   nome             String
@@ -42,4 +82,12 @@ model Template {
   remetente        String   @default("cotacao@mabus.com.br")
   updatedAt        DateTime @updatedAt
   createdAt        DateTime @default(now())
+}
+
+model RegistrationToken {
+  id           String   @id @default(cuid())
+  token        String   @unique
+  expiresAt    DateTime
+  used         Boolean  @default(false)
+  createdAt    DateTime @default(now())
 }
