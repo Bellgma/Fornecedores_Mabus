@@ -2,10 +2,10 @@ import SimuladorFrete from "@/components/fretes/SimuladorFrete"
 
 export default function FretesPage() {
   return (
-    <div className="space-y-6 animate-in fade-in duration-500">
+    <div className="space-y-8 animate-in fade-in duration-700">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Simulador de Fretes</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Compare preços e prazos de entrega entre transportadoras homologadas.</p>
+        <h1 className="text-4xl font-black text-slate-800 tracking-tight">Simulador de Rotas</h1>
+        <p className="text-slate-500 font-medium mt-2">Inteligência logística para encontrar o melhor custo-benefício.</p>
       </div>
 
       <SimuladorFrete />

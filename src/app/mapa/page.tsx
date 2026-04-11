@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma"
-import { MapPin } from "lucide-react"
+import { MapPin, Globe } from "lucide-react"
 import { MapaWrapper } from "@/components/mapa/MapaWrapper"
 
 export const revalidate = 0
@@ -17,24 +17,40 @@ export default async function MapaPage() {
   ])
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Mapa de Operações</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Visualize a distribuição geográfica dos parceiros da Mabus</p>
+    <div className="space-y-8 animate-in fade-in duration-700 h-[calc(100vh-4rem)] flex flex-col">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-4xl font-black text-slate-800 tracking-tight">Mapa Operacional</h1>
+          <p className="text-slate-500 font-medium mt-2">Centro de controle geográfico de logística e parcerias.</p>
+        </div>
+        <div className="flex gap-4">
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 px-5 py-3 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center border border-blue-200">
+              <MapPin className="w-4 h-4 text-blue-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Total</p>
+              <p className="text-sm font-black text-slate-800 leading-none">{fornecedores.length} Parceiros</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 px-5 py-3 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center border border-rose-200">
+              <MapPin className="w-4 h-4 text-rose-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Rotas</p>
+              <p className="text-sm font-black text-slate-800 leading-none">{transportadoras.length} Transporte</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="bg-white dark:bg-[#1f1f1f] p-4 rounded-xl shadow-sm border border-gray-200 dark:border-white/5 flex gap-6">
-        <div className="flex items-center gap-2 text-sm">
-          <MapPin className="w-5 h-5 text-blue-500" />
-          <span className="font-medium text-gray-700 dark:text-gray-200">Fornecedores ({fornecedores.length})</span>
+      <div className="flex-1 bg-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200 p-3 z-0 relative overflow-hidden group">
+        <div className="absolute inset-0 z-10 pointer-events-none rounded-[2.5rem] border-4 border-slate-50/50 mix-blend-overlay"></div>
+        <div className="absolute top-8 left-8 z-20 bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl border border-slate-200 shadow-sm flex items-center gap-2">
+          <Globe className="w-4 h-4 text-purple-500" />
+          <span className="text-xs font-bold text-slate-700 tracking-wide">Visão em Tempo Real</span>
         </div>
-        <div className="flex items-center gap-2 text-sm">
-          <MapPin className="w-5 h-5 text-red-500" />
-          <span className="font-medium text-gray-700 dark:text-gray-200">Transportadoras ({transportadoras.length})</span>
-        </div>
-      </div>
-
-      <div className="bg-white dark:bg-[#1f1f1f] rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 p-2 z-0 relative">
         <MapaWrapper fornecedores={fornecedores} transportadoras={transportadoras} />
       </div>
     </div>

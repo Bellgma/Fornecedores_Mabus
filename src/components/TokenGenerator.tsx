@@ -32,39 +32,43 @@ export default function TokenGenerator() {
   }
 
   return (
-    <div className="bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 rounded-xl p-6 mb-8">
-      <div className="flex items-start gap-4">
-        <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/20 flex items-center justify-center shrink-0">
-          <LinkIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+    <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200 p-8 mb-8 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-8 relative z-10">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 border border-purple-200 flex items-center justify-center shrink-0 shadow-sm">
+          <LinkIcon className="w-8 h-8 text-purple-600" />
         </div>
         <div className="flex-1">
-          <h3 className="text-base font-semibold text-gray-900 dark:text-white">Auto-cadastro para Fornecedores</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 mb-4">
-            Gere um link temporário (válido por 7 dias) para enviar ao fornecedor. Ele mesmo poderá preencher os dados cadastrais, que cairão no sistema como "Em análise".
+          <h3 className="text-xl font-black text-slate-800 tracking-tight">Convite de Onboarding</h3>
+          <p className="text-sm font-medium text-slate-500 mt-2 max-w-2xl">
+            Gere um link criptografado e temporário (válido por 7 dias) para enviar ao fornecedor. Ele mesmo poderá preencher os dados, que entrarão no sistema como <strong className="text-slate-700">Em Análise</strong>.
           </p>
+        </div>
 
+        <div className="shrink-0 w-full md:w-auto">
           {!url ? (
             <button
               onClick={handleGenerate}
               disabled={loading}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-3.5 rounded-2xl text-sm font-bold transition-all shadow-md disabled:opacity-50"
             >
-              {loading ? "Gerando..." : "Gerar Link de Cadastro"}
+              {loading ? "Gerando Token..." : "Gerar Link de Convite"}
             </button>
           ) : (
-            <div className="flex items-center gap-2 max-w-xl">
+            <div className="flex items-center gap-2 max-w-md w-full">
               <input
                 type="text"
                 readOnly
                 value={url}
-                className="flex-1 bg-white dark:bg-[#121212] border border-blue-200 dark:border-blue-500/30 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none"
+                className="flex-1 bg-slate-50 border border-purple-200 rounded-2xl px-4 py-3.5 text-sm font-bold text-slate-800 focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 transition-all"
               />
               <button
+                aria-label="Copiar link"
                 onClick={handleCopy}
-                className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-400 bg-blue-100 dark:bg-blue-500/20 hover:bg-blue-200 dark:hover:bg-blue-500/30 rounded-lg transition-colors"
+                className="flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-bold text-white bg-purple-600 hover:bg-purple-700 rounded-2xl transition-all shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]"
               >
-                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                {copied ? "Copiado" : "Copiar"}
+                {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
               </button>
             </div>
           )}

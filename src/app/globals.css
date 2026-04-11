@@ -1,15 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-mabus-purple: #8b5cf6; /* purple-500 */
+}
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 40% 98%; /* slate-50 */
     --foreground: 222.2 84% 4.9%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 0 0% 100%;
+  body {
+    background-color: theme('colors.slate.50');
+    color: theme('colors.slate.800');
   }
 }

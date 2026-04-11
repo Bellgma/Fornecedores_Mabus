@@ -26,118 +26,123 @@ export default function SimuladorFrete() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div className="lg:col-span-1">
-        <div className="bg-white dark:bg-[#1f1f1f] rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Dados da Cotação</h2>
+        <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200 p-8">
+          <h2 className="text-xl font-black text-slate-800 tracking-tight mb-8">Parâmetros</h2>
 
-          <form onSubmit={handleSimular} className="space-y-5">
+          <form onSubmit={handleSimular} className="space-y-6">
             <div className="space-y-4">
-              <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider flex items-center gap-2">
-                <MapPin className="w-4 h-4" /> Rotas
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4">
+                <MapPin className="w-4 h-4" /> Trajeto
               </h3>
               <div>
-                <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">CEP Origem (Fornecedor)</label>
-                <input required placeholder="00000-000" className="w-full px-3 py-2 bg-gray-50 dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white" />
+                <label className="block text-xs font-bold text-slate-600 mb-2 uppercase tracking-wide">Origem (CEP)</label>
+                <input required placeholder="00000-000" className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all text-slate-800 placeholder-slate-400" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">CEP Destino (Mabus)</label>
-                <input required placeholder="00000-000" className="w-full px-3 py-2 bg-gray-50 dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white" />
+                <label className="block text-xs font-bold text-slate-600 mb-2 uppercase tracking-wide">Destino (CEP)</label>
+                <input required placeholder="00000-000" className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all text-slate-800 placeholder-slate-400" />
               </div>
             </div>
 
-            <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-white/5">
-              <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider flex items-center gap-2">
-                <Package className="w-4 h-4" /> Dimensões
+            <div className="space-y-4 pt-6 border-t border-slate-100">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4">
+                <Package className="w-4 h-4" /> Volumes
               </h3>
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Alt (cm)</label>
-                  <input required type="number" min="1" defaultValue="10" className="w-full px-3 py-2 bg-gray-50 dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white" />
+                  <label className="block text-xs font-bold text-slate-600 mb-2 uppercase tracking-wide">Alt (cm)</label>
+                  <input required type="number" min="1" defaultValue="10" className="w-full px-3 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all text-slate-800 text-center" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Larg (cm)</label>
-                  <input required type="number" min="1" defaultValue="10" className="w-full px-3 py-2 bg-gray-50 dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white" />
+                  <label className="block text-xs font-bold text-slate-600 mb-2 uppercase tracking-wide">Larg (cm)</label>
+                  <input required type="number" min="1" defaultValue="10" className="w-full px-3 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all text-slate-800 text-center" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Prof (cm)</label>
-                  <input required type="number" min="1" defaultValue="10" className="w-full px-3 py-2 bg-gray-50 dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white" />
+                  <label className="block text-xs font-bold text-slate-600 mb-2 uppercase tracking-wide">Prof (cm)</label>
+                  <input required type="number" min="1" defaultValue="10" className="w-full px-3 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all text-slate-800 text-center" />
                 </div>
               </div>
             </div>
 
-            <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-white/5">
+            <div className="space-y-4 pt-6 border-t border-slate-100">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 flex items-center gap-1">
-                    <Scale className="w-3 h-3" /> Peso (kg)
+                  <label className="block text-xs font-bold text-slate-600 mb-2 uppercase tracking-wide flex items-center gap-1.5">
+                    <Scale className="w-3.5 h-3.5" /> Peso (kg)
                   </label>
-                  <input required type="number" step="0.1" defaultValue="1" className="w-full px-3 py-2 bg-gray-50 dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white" />
+                  <input required type="number" step="0.1" defaultValue="1" className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all text-slate-800" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 flex items-center gap-1">
-                    <CreditCard className="w-3 h-3" /> Valor NF (R$)
+                  <label className="block text-xs font-bold text-slate-600 mb-2 uppercase tracking-wide flex items-center gap-1.5">
+                    <CreditCard className="w-3.5 h-3.5" /> Valor (R$)
                   </label>
-                  <input required type="number" step="0.01" defaultValue="100.00" className="w-full px-3 py-2 bg-gray-50 dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white" />
+                  <input required type="number" step="0.01" defaultValue="100.00" className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all text-slate-800" />
                 </div>
               </div>
             </div>
 
-            <button type="submit" disabled={loading} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-6 flex items-center justify-center gap-2">
-              {loading ? "Simulando rotas..." : <><Search className="w-4 h-4" /> Calcular Frete</>}
+            <button type="submit" disabled={loading} className="w-full mt-8 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-bold py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+              {loading ? "Processando API..." : <><Search className="w-5 h-5" /> Encontrar Melhor Rota</>}
             </button>
           </form>
         </div>
       </div>
 
       <div className="lg:col-span-2">
-        <div className="bg-white dark:bg-[#1f1f1f] rounded-2xl shadow-sm border border-gray-200 dark:border-white/5 p-6 min-h-[500px]">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Resultados</h2>
+        <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200 p-8 min-h-[600px] flex flex-col">
+          <h2 className="text-xl font-black text-slate-800 tracking-tight mb-8">Painel de Cotações</h2>
 
           {!simulacao && !loading && (
-            <div className="h-[400px] flex flex-col items-center justify-center text-center">
-              <Truck className="w-16 h-16 text-gray-200 dark:text-gray-700 mb-4" />
-              <p className="text-gray-500 dark:text-gray-400">Preencha os dados ao lado para simular o frete.</p>
-              <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">A simulação consulta APIs de transportadoras em tempo real.</p>
+            <div className="flex-1 flex flex-col items-center justify-center text-center">
+              <div className="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center mb-6 border border-slate-100">
+                <Truck className="w-10 h-10 text-slate-300" />
+              </div>
+              <h3 className="text-xl font-black text-slate-800">Pronto para cotar</h3>
+              <p className="text-slate-500 font-medium mt-2 max-w-sm">Preencha os parâmetros de carga ao lado para consultar a disponibilidade nas transportadoras integradas.</p>
             </div>
           )}
 
           {loading && (
-            <div className="h-[400px] flex flex-col items-center justify-center text-center space-y-4">
-              <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-              <p className="text-gray-500 dark:text-gray-400">Consultando tabelas...</p>
+            <div className="flex-1 flex flex-col items-center justify-center text-center space-y-6">
+              <div className="relative w-16 h-16">
+                <div className="absolute inset-0 border-4 border-purple-200 rounded-full"></div>
+                <div className="absolute inset-0 border-4 border-purple-600 rounded-full border-t-transparent animate-spin"></div>
+              </div>
+              <p className="text-slate-500 font-bold tracking-widest uppercase text-sm animate-pulse">Sincronizando com Transportadoras...</p>
             </div>
           )}
 
           {simulacao && !loading && (
             <div className="space-y-4">
               {simulacao.map((opcao) => (
-                <div key={opcao.id} className={`flex items-center justify-between p-4 rounded-xl border transition-all ${
+                <div key={opcao.id} className={`flex items-center justify-between p-6 rounded-2xl border transition-all ${
                   opcao.recomendada
-                    ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-500/5'
-                    : 'border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20'
+                    ? 'border-emerald-300 bg-gradient-to-r from-emerald-50/50 to-white shadow-[0_4px_20px_rgba(16,185,129,0.1)]'
+                    : 'border-slate-200 hover:border-purple-200 hover:shadow-md'
                 }`}>
-                  <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center font-bold text-lg ${
+                  <div className="flex items-center gap-5">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-black text-xl shadow-sm ${
                       opcao.recomendada
-                        ? 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
-                        : 'bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-300'
+                        ? 'bg-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.4)]'
+                        : 'bg-white border border-slate-200 text-slate-600'
                     }`}>
                       {opcao.logo}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                      <h4 className="font-bold text-slate-800 text-lg flex items-center gap-3">
                         {opcao.transportadora.split('(')[0]}
                         {opcao.recomendada && (
-                          <span className="text-[10px] uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 px-2 py-0.5 rounded font-bold">
-                            Recomendada
+                          <span className="text-[10px] uppercase tracking-widest bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-lg font-black">
+                            Recomendação do Sistema
                           </span>
                         )}
                       </h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Prazo: {opcao.prazo}</p>
+                      <p className="text-sm text-slate-500 font-medium mt-1">Prazo estimado: <strong className="text-slate-700">{opcao.prazo}</strong></p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">R$</span>
-                    <span className="text-2xl font-bold text-gray-900 dark:text-white ml-1">
+                    <span className="text-sm font-bold text-slate-400">R$</span>
+                    <span className="text-3xl font-black text-slate-800 tracking-tighter ml-1">
                       {opcao.valor.toFixed(2).replace('.', ',')}
                     </span>
                   </div>
